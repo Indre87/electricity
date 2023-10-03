@@ -19,11 +19,18 @@
         </div>
     </div>
     <script>
-        fetch('http://localhost:5500/data/data.json')
+        fetch('http://localhost:5500/data/current.json')
             .then((response) => response.json())
             .then((json) => {
                 console.log(json.price)
                 const elem = document.getElementById("price")
+                elem.innerHTML = json.price
+            });
+        fetch('http://localhost:5500/data/next.json')
+            .then((response) => response.json())
+            .then((json) => {
+                console.log(json.price)
+                const elem = document.getElementById("price2")
                 elem.innerHTML = json.price
             });
     </script>

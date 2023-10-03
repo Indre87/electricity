@@ -45,3 +45,10 @@ div {
 #price::after {
     content: " cnt";
 }
+
+#price2::before {
+    content: "Seuraava tunti: ";
+}
+#price2::after {
+    content: " cnt";
+}
