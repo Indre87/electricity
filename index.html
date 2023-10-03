@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Sähkön hinta</h1>
+        </div>
+        <div class="content">
+            <h2 id="price">Lataa...</h2>
+            
+        </div>
+        <div class="content">
+            <h2 id="price2">Seuraava tunti: </h2>
+            
+        </div>
+    </div>
+    <script>
+        fetch('http://localhost:5500/data/data.json')
+            .then((response) => response.json())
+            .then((json) => {
+                console.log(json.price)
+                const elem = document.getElementById("price")
+                elem.innerHTML = json.price
+            });
+    </script>
+</body>
+</html>
