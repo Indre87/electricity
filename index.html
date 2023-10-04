@@ -5,19 +5,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Sähkön hinta</h1>
-        </div>
-        <div class="content">
-            <h2 id="price">Lataa...</h2>
+
+
+       
+            <h2 class="Nyt" id="price">Lataa...</h2>
             
-        </div>
-        <div class="content">
-            <h2 id="price2">Seuraava tunti: </h2>
-            
-        </div>
-    </div>
+        
+       <p class="tunti1">+1h</p>
+            <h2 class="Seuraava" id="price2">Lataa...</h2>
+        
+        
+       <p class="tunti2">+2h</p>
+            <h2  class="Seuraava2" id="price3">Lataa...</h2>
+
+  
+   
     <script>
         fetch('http://localhost:5500/data/current.json')
             .then((response) => response.json())
@@ -25,6 +27,18 @@
                 console.log(json.price)
                 const elem = document.getElementById("price")
                 elem.innerHTML = json.price
+                if (json.price > 10)
+                {
+                    document.getElementById("price").style.color = "#FF0000";
+                }
+                if (json.price > 5 && json.price < 10)
+                {
+                    document.getElementById("price").style.color = "#FFB100";
+                }
+                if (json.price < 5)
+                {
+                    document.getElementById("price").style.color = "#00B207";
+                }
             });
         fetch('http://localhost:5500/data/next.json')
             .then((response) => response.json())
@@ -32,6 +46,37 @@
                 console.log(json.price)
                 const elem = document.getElementById("price2")
                 elem.innerHTML = json.price
+                if (json.price > 10)
+                {
+                    document.getElementById("price2").style.color = "#FF0000";
+                }
+                if (json.price > 5 && json.price < 10)
+                {
+                    document.getElementById("price2").style.color = "#FFB100";
+                }
+                if (json.price < 5)
+                {
+                    document.getElementById("price2").style.color = "#00B207";
+                }
+            });
+        fetch('http://localhost:5500/data/next2.json')
+            .then((response) => response.json())
+            .then((json) => {
+                console.log(json.price)
+                const elem = document.getElementById("price3")
+                elem.innerHTML = json.price
+                if (json.price > 10)
+                {
+                    document.getElementById("price3").style.color = "#FF0000";
+                }
+                if (json.price > 5 && json.price < 10)
+                {
+                    document.getElementById("price3").style.color = "#FFB100";
+                }
+                if (json.price < 5)
+                {
+                    document.getElementById("price3").style.color = "#00B207";
+                }
             });
     </script>
 </body>

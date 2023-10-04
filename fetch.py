@@ -9,17 +9,25 @@ import urllib.request
 import os
 
 
+
 hour = datetime.datetime.now().hour
-date = datetime.date.today()
- 
-url_current = "https://api.porssisahko.net/v1/price.json?date=2023-10-03&hour=20"
-url_next = "https://api.porssisahko.net/v1/price.json?date=2023-10-03&hour=21"
+date = datetime.datetime.today().strftime('%Y-%m-%d')
+
+url_current = (f"https://api.porssisahko.net/v1/price.json?date={date}&hour={hour}")
+url_next = (f"https://api.porssisahko.net/v1/price.json?date={date}&hour={hour+1}")
+url_next2 = (f"https://api.porssisahko.net/v1/price.json?date={date}&hour={hour+2}")
+
+print (url_current)
+print(url_next)
+print(url_next2)
 
 dirname = "data"
 filename_current = "current.json"
 filename_next = "next.json"
+filename_next2 = "next2.json"
 filepath_current = os.path.join(dirname,filename_current)
 filepath_next = os.path.join(dirname,filename_next)
+filepath_next2 = os.path.join(dirname,filename_next2)
 
 if not os.path.exists(dirname):
     os.mkdir(dirname)
@@ -32,8 +40,14 @@ if not os.path.isfile(filepath_next):
     with open(filepath_next,'w') as file:
         file.close()
 
+if not os.path.isfile(filepath_next2):
+    with open(filepath_next2,'w') as file:
+        file.close()
+
 
 headers={'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': 'Mozilla/5.0'}
+
+# Current hour
 
 req_current = urllib.request.Request(url_current, headers=headers)
 data_out = {}
@@ -53,6 +67,8 @@ with open(filepath_current, "r+") as file:
                indent=4, separators=(',', ': ')))
     file.close()
 
+# Next hour 
+
 req_next = urllib.request.Request(url_next, headers=headers)
 data_out = {}
 with open(filepath_next, "r+") as file:
@@ -70,3 +86,23 @@ with open(filepath_next, "r+") as file:
     file.write(json.dumps(data_in, sort_keys=True, 
                indent=4, separators=(',', ': ')))
     file.close()
+
+# Third hour
+
+req_next2 = urllib.request.Request(url_next2, headers=headers)
+data_out = {}
+with open(filepath_next2, "r+") as file:
+    try:
+        data_out = json.load(file)
+    except:
+        print("No JSON data found")
+    
+    response = urllib.request.urlopen(req_next2).read()
+    print(response)
+    data_in = json.loads(response)
+    
+    time.sleep(0.01)
+    file.seek(0)
+    file.write(json.dumps(data_in, sort_keys=True, 
+               indent=4, separators=(',', ': ')))
+    file.close()    
