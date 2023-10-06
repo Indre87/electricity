@@ -50,12 +50,8 @@ headers={'Content-Type': 'application/json', 'Accept': 'application/json', 'User
 # Current hour
 
 req_current = urllib.request.Request(url_current, headers=headers)
-data_out = {}
-with open(filepath_current, "r+") as file:
-    try:
-        data_out = json.load(file)
-    except:
-        print("No JSON data found")
+
+with open(filepath_current, "w") as file:
     
     response = urllib.request.urlopen(req_current).read()
     print(response)
@@ -63,19 +59,14 @@ with open(filepath_current, "r+") as file:
     
     time.sleep(0.01)
     file.seek(0)
-    file.write(json.dumps(data_in, sort_keys=True, 
-               indent=4, separators=(',', ': ')))
+    file.write(json.dumps(data_in))
     file.close()
 
 # Next hour 
 
 req_next = urllib.request.Request(url_next, headers=headers)
-data_out = {}
-with open(filepath_next, "r+") as file:
-    try:
-        data_out = json.load(file)
-    except:
-        print("No JSON data found")
+
+with open(filepath_next, "w") as file:
     
     response = urllib.request.urlopen(req_next).read()
     print(response)
@@ -83,19 +74,14 @@ with open(filepath_next, "r+") as file:
     
     time.sleep(0.01)
     file.seek(0)
-    file.write(json.dumps(data_in, sort_keys=True, 
-               indent=4, separators=(',', ': ')))
+    file.write(json.dumps(data_in))
     file.close()
 
 # Third hour
 
 req_next2 = urllib.request.Request(url_next2, headers=headers)
-data_out = {}
-with open(filepath_next2, "r+") as file:
-    try:
-        data_out = json.load(file)
-    except:
-        print("No JSON data found")
+
+with open(filepath_next2, "w") as file:
     
     response = urllib.request.urlopen(req_next2).read()
     print(response)
@@ -103,6 +89,5 @@ with open(filepath_next2, "r+") as file:
     
     time.sleep(0.01)
     file.seek(0)
-    file.write(json.dumps(data_in, sort_keys=True, 
-               indent=4, separators=(',', ': ')))
+    file.write(json.dumps(data_in))
     file.close()    

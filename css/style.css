@@ -15,11 +15,11 @@ body {
     /* Layout Properties */
     position:fixed;
 top: 1px;
-left: 260px;
+left: 270px;
 
 /* UI Properties */
 text-align: left;
-font: normal normal normal 180px/192px Lato;
+font: normal normal normal 120px/192px Lato;
 letter-spacing: 0px;
 color: #00B207;
 opacity: 1;
@@ -27,7 +27,7 @@ opacity: 1;
 .Seuraava {
     /* Layout Properties */
     position:fixed;
-top: 460px;
+top: 360px;
 left: 46px;
 width: 125px;
 height: 48px;
@@ -40,8 +40,8 @@ opacity: 1;
 }
 .Seuraava2 {
     position:fixed;
-    top: 460px;
-left: 830px;
+    top: 360px;
+left: 670px;
 width: 102px;
 height: 48px;
 text-align: left;
@@ -52,7 +52,7 @@ opacity: 1;
 }
 .tunti1 {
     position:fixed;
-    top: 420px;
+    top: 320px;
 left: 46px;
 width: 242px;
 height: 35px;
@@ -64,8 +64,8 @@ opacity: 1;
 }
 .tunti2 {
     position:fixed;
-    top: 420px;
-    left: 830px;
+    top: 320px;
+    left: 670px;
     width: 81px;
     height: 35px;
     text-align: left;
@@ -73,4 +73,16 @@ opacity: 1;
     letter-spacing: 0px;
     color: #3b3a3a;
     opacity: 1; 
+}
+.clock {
+position:fixed;
+top: -10px;
+left: 45px;
+width: 81px;
+height: 35px;
+text-align: left;
+font: normal normal normal 30px/36px Helvetica Neue;
+letter-spacing: 0px;
+color: #7c7c7c;
+opacity: 1; 
 }
