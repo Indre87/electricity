@@ -50,6 +50,8 @@
                     document.getElementById("price").style.color = "#00B207";
                 }
             });
+
+            //http://fullpageos.local/electricity/data/next2.json raspberry url
         fetch('http://localhost:5500/data/next.json')
             .then((response) => response.json())
             .then((json) => {
