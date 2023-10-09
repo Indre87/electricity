@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 class="Nyt" id="price">Lataa</h1>
-    <div>
+    <div style="border: 0px;">
         <canvas id="myChart" width="800" height="400"></canvas>
     </div>
     <script>
@@ -101,7 +101,7 @@
                         label: 'cnt/kWh',
                         data: getChartDataByIndex(chartData, 'price'),
                         backgroundColor: getChartDataByIndex(chartData, 'color'),
-                        borderWidth: 1
+                        borderWidth: 0
                     }]
                 },
                 options: {
